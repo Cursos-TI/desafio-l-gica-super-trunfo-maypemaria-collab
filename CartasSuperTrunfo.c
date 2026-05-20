@@ -69,11 +69,70 @@ int main() {
     printf("Densidade populacional: %.2f\n", densidade2);
     printf("PIB per capita2: %.2f reais\n", pibpercapita2 );
 
-    printf("\n---Comparacao das cartas---\n");
-    if (populacao1 > populacao2) {
-        printf("Resultado: Carta 1 (%s) venceu\n", nome1);
-    } else {
-        printf("Resultado: Carta 2 (%s) venceu\n", nome2);
-    } 
+    printf("\n---Menu Comparacao das cartas---\n");
+    int opcao;
+    printf("Escolha a opcao de comparacao:\n");
+    printf("1. Populacao\n");
+    printf("2. Area\n");
+    printf("3. PIB\n");
+    printf("4. Pontos Turisticos\n");
+    printf("5. Densidade Populacional\n");
+    printf("6. PIB per capita\n");
+    printf("Digite a opcao: ");
+    scanf(" %d", &opcao);   
+
+    switch (opcao) {
+         case 1: //Se o usuario digitou 1//
+            if (populacao1 > populacao2) {
+                printf("Vencedor: %s\n", nome1);
+            } else if (populacao1 < populacao2) {
+                printf("Vencedor: %s\n", nome2);
+            } else {
+                printf("Empate!\n");
+            } break;
+        case 2: //Se o usuario digitou 2//
+            if (area1 > area2) {
+                printf("Vencedor: %s\n", nome1);
+            } else if (area1 < area2) {
+                printf("Vencedor: %s\n", nome2);
+            } else {
+                printf("Empate!\n");
+            } break;
+        case 3: //Se o usuario digitou 3//
+            if (pib1 > pib2) {
+                printf("Vencedor: %s\n", nome1);
+            } else if (pib1 < pib2) {
+                printf("Vencedor: %s\n", nome2);
+            } else {
+                printf("Empate!\n");    
+            }   break;  
+        case 4: //Se o usuario digitou 4//
+            if (pontosturisticos1 > pontosturisticos2) {
+                printf("Vencedor: %s\n", nome1);
+            } else if (pontosturisticos1 < pontosturisticos2) {
+                printf("Vencedor: %s\n", nome2);
+            } else {
+                printf("Empate!\n");    
+            }   break;
+        case 5: //Se o usuario digitou 5//  
+            if (densidade1 < densidade2) {
+                printf("Vencedor: %s\n", nome1);
+            } else if (densidade1 > densidade2) {
+                printf("Vencedor: %s\n", nome2);
+            } else {
+                printf("Empate!\n");    
+            }   break;    
+        case 6: //Se o usuario digitou 6//
+                if (pibpercapita1 > pibpercapita2) {
+                    printf("Vencedor: %s\n", nome1);
+                } else if (pibpercapita1 < pibpercapita2) {
+                    printf("Vencedor: %s\n", nome2);
+                } else {
+                    printf("Empate!\n");    
+            }   break;
+        default:
+        printf("Opcao invalida!\n"); 
+              break;
+        }
     return 0;
 }
