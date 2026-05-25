@@ -70,69 +70,122 @@ int main() {
     printf("PIB per capita2: %.2f reais\n", pibpercapita2 );
 
     printf("\n---Menu Comparacao das cartas---\n");
-    int opcao;
-    printf("Escolha a opcao de comparacao:\n");
+    int opcao1, opcao2;
+    float valor1_carta1= 0, valor1_carta2= 0;
+    float valor2_carta1= 0, valor2_carta2= 0;
+
+    printf("Escolha o primeiro atributo para comparar:\n");
     printf("1. Populacao\n");
     printf("2. Area\n");
     printf("3. PIB\n");
     printf("4. Pontos Turisticos\n");
     printf("5. Densidade Populacional\n");
     printf("6. PIB per capita\n");
-    printf("Digite a opcao: ");
-    scanf(" %d", &opcao);   
+    printf("Digite a opcao do primeiro atributo: ");
+    scanf(" %d", &opcao1);
+    //Guardar os valores do primeiro atributo escolhido para cada carta//   
+    switch (opcao1)
+    {
+    case 1:
+        valor1_carta1 = (float)populacao1;
+        valor1_carta2 = (float)populacao2;
+        break;
+    case 2:
+        valor1_carta1 = area1;
+        valor1_carta2 = area2;
+        break;
+    case 3:
+        valor1_carta1 = pib1;
+        valor1_carta2 = pib2;
+        break;
+    case 4:
+        valor1_carta1 = (float)pontosturisticos1;
+        valor1_carta2 = (float)pontosturisticos2;
+        break;
+    case 5:
+        valor1_carta1 = densidade1;
+        valor1_carta2 = densidade2;
+        break;
+    case 6:
+        valor1_carta1 = pibpercapita1;
+        valor1_carta2 = pibpercapita2;
+        break;
+    
+    default: printf("Opcao invalida. Tente novamente.\n");
+        break;
+    }
+//Escolher o segundo atributo para comparar//
+    printf("Escolha o segundo atributo para comparar:\n");
+    if (opcao1 != 1) printf("1. Populacao\n");
+    if (opcao1 != 2) printf("2. Area\n");
+    if (opcao1 != 3) printf("3. PIB\n");
+    if (opcao1 != 4) printf("4. Pontos Turisticos\n");
+    if (opcao1 != 5) printf("5. Densidade Populacional\n");
+    if (opcao1 != 6) printf("6. PIB per capita\n");
+    printf("Digite a opcao do segundo atributo: ");
+    scanf(" %d", &opcao2);
+    //Guardar os valores do segundo atributo escolhido para cada carta//
+    switch (opcao2)
+    {    case 1:
+        valor2_carta1 = (float)populacao1;
+        valor2_carta2 = (float)populacao2;
+        break;
+    case 2:
+        valor2_carta1 = area1;
+        valor2_carta2 = area2;
+        break;
+    case 3:
+        valor2_carta1 = pib1;       
+        valor2_carta2 = pib2;
+        break;
+    case 4:
+        valor2_carta1 = (float)pontosturisticos1;
+        valor2_carta2 = (float)pontosturisticos2;
+        break;
+    case 5:
+        valor2_carta1 = densidade1;
+        valor2_carta2 = densidade2;
+        break;
+    case 6:
+        valor2_carta1 = pibpercapita1;
+        valor2_carta2 = pibpercapita2;
+        default: printf("Opcao invalida. Tente novamente.\n");
+        break;  
+    }
+    //Bloco para acumular os pontos de cada carta com base nos atributos escolhidos//
+    int pontos_carta1 = 0, pontos_carta2 = 0;
 
-    switch (opcao) {
-         case 1: //Se o usuario digitou 1//
-            if (populacao1 > populacao2) {
-                printf("Vencedor: %s\n", nome1);
-            } else if (populacao1 < populacao2) {
-                printf("Vencedor: %s\n", nome2);
-            } else {
-                printf("Empate!\n");
-            } break;
-        case 2: //Se o usuario digitou 2//
-            if (area1 > area2) {
-                printf("Vencedor: %s\n", nome1);
-            } else if (area1 < area2) {
-                printf("Vencedor: %s\n", nome2);
-            } else {
-                printf("Empate!\n");
-            } break;
-        case 3: //Se o usuario digitou 3//
-            if (pib1 > pib2) {
-                printf("Vencedor: %s\n", nome1);
-            } else if (pib1 < pib2) {
-                printf("Vencedor: %s\n", nome2);
-            } else {
-                printf("Empate!\n");    
-            }   break;  
-        case 4: //Se o usuario digitou 4//
-            if (pontosturisticos1 > pontosturisticos2) {
-                printf("Vencedor: %s\n", nome1);
-            } else if (pontosturisticos1 < pontosturisticos2) {
-                printf("Vencedor: %s\n", nome2);
-            } else {
-                printf("Empate!\n");    
-            }   break;
-        case 5: //Se o usuario digitou 5//  
-            if (densidade1 < densidade2) {
-                printf("Vencedor: %s\n", nome1);
-            } else if (densidade1 > densidade2) {
-                printf("Vencedor: %s\n", nome2);
-            } else {
-                printf("Empate!\n");    
-            }   break;    
-        case 6: //Se o usuario digitou 6//
-                if (pibpercapita1 > pibpercapita2) {
-                    printf("Vencedor: %s\n", nome1);
-                } else if (pibpercapita1 < pibpercapita2) {
-                    printf("Vencedor: %s\n", nome2);
-                } else {
-                    printf("Empate!\n");    
-            }   break;
-        default:
-        printf("Opcao invalida!\n"); 
-              break;
-        }
+    if (opcao1 ==5)
+    {
+        pontos_carta1 += (valor1_carta1 < valor1_carta2) ? 1 : 0;
+        pontos_carta2 += (valor1_carta2 < valor1_carta1) ? 1 : 0;
+    } else {
+        pontos_carta1 += (valor1_carta1 > valor1_carta2) ? 1 : 0;
+        pontos_carta2 += (valor1_carta2 > valor1_carta1) ? 1 : 0;
+    }
+    //Agora o if para o segundo atributo//
+    if (opcao2 ==5)
+    {
+        pontos_carta1 += (valor2_carta1 < valor2_carta2) ? 1 : 0;
+        pontos_carta2 += (valor2_carta2 < valor2_carta1) ? 1 : 0;
+    } else {
+        pontos_carta1 += (valor2_carta1 > valor2_carta2) ? 1 : 0;
+        pontos_carta2 += (valor2_carta2 > valor2_carta1) ? 1 : 0;
+    }
+    //Calculando a soma dos valores totais//
+    float soma_carta1 = valor1_carta1 + valor2_carta1;
+    float soma_carta2 = valor1_carta2 + valor2_carta2;
+    //Exibindo o resultado da comparação//
+    printf("\n---Resultado da comparacao---\n");
+    printf("Cartas na disputa: %s VS %s\n", nome1, nome2);
+    printf("Pontos da primeira carta %s: %d\n", nome1, pontos_carta1);
+    printf("Pontos da segunda carta %s: %d\n", nome2, pontos_carta2);
+    printf("Soma dos valores da primeira carta %s: %.2f\n", nome1, soma_carta1);
+    printf("Soma dos valores da segunda carta %s: %.2f\n", nome2, soma_carta2);
+
+    //Uso do operador ternário para determinar o vencedor//
+    (pontos_carta1 > pontos_carta2) ? printf("Vencedor: %s\n", nome1) :
+    (pontos_carta2 > pontos_carta1) ? printf("Vencedor: %s\n", nome2) : printf("Empate nos pontos!\n");
+
     return 0;
 }
